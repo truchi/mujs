@@ -1,14 +1,12 @@
 {
   "name": "mujs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "♭♮♯",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Romain TRUCHI",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^3.8.1",
