@@ -7,10 +7,10 @@ class Note {
       `(${NOTES.join('|')})([${ACCS.flat}|${ACCS.natural}|${ACCS.sharp}]*)`
     ).exec(str)
 
-    accs     = accs2int(accs)
-    let semi = mod(NOTE2INT[base] + accs, 12)
+    accs      = accs2int(accs)
+    let semis = mod(NOTE2INT[base] + accs, 12)
 
-    return { name, base, accs, semi }
+    return { name, base, accs, semis }
   }
 }
 
