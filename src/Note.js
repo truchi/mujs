@@ -7,7 +7,7 @@ class Note {
     this.name  = name
     this.base  = base
     this.accs  = accs
-    this.semis = semi
+    this.semis = semis
   }
 }
 

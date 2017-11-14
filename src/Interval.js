@@ -1,7 +1,7 @@
 import helper from './helpers/Interval'
 
 class Interval {
-  constructor(str = 'C') {
+  constructor(str = '1') {
     const { name, base, accs, semis } = helper.parse(str)
 
     this.name  = name
