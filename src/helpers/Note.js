@@ -3,14 +3,14 @@ import { NOTES, ACCS } from './symbols'
 
 class Note {
   static parse(str) {
-    let [name, base, acc] = new RegExp(
+    let [name, base, accs] = new RegExp(
       `(${NOTES.join('|')})([${ACCS.flat}|${ACCS.natural}|${ACCS.sharp}]*)`
     ).exec(str)
 
-    acc      = accs2int(acc)
-    let semi = mod(NOTE2INT[base] + acc, 12)
+    accs     = accs2int(accs)
+    let semi = mod(NOTE2INT[base] + accs, 12)
 
-    return { name, base, acc, semi }
+    return { name, base, accs, semi }
   }
 }
 

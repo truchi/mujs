@@ -2,12 +2,12 @@ import { ACCS } from './symbols'
 
 export const mod = (i, j) => ((i % j) + j) % j
 
-export const accs2int = (str) => {
-  str = str.replace(ACCS.natural, '')
-  let acc = str.length
-    - 2 * (str.match(new RegExp(`${ACCS.flat}`, 'g')) || []).length
+export const accs2int = (accs) => {
+  accs = accs.replace(ACCS.natural, '')
+  let i = accs.length
+    - 2 * (accs.match(new RegExp(`${ACCS.flat}`, 'g')) || []).length
 
-  return acc
+  return i
 }
 
 export const NOTE2INT = { 'C': 0, 'D': 2, 'E': 4,
