@@ -6,6 +6,7 @@ import Mode from '../Mode'
 
 class ScaleHelper {
   static modes(root, intvs) {
+    root           = root.clone()
     intvs          = Interval.clone(intvs)
     const symmetry = ScaleHelper.symmetry(intvs)
     let modes      = [ScaleHelper.mode(root, intvs)]
@@ -23,6 +24,7 @@ class ScaleHelper {
   }
 
   static mode(root, intvs) {
+    root     = root.clone()
     intvs    = Interval.clone(intvs)
     let prev = new Interval(INTVS[0])
     intvs.unshift(prev)
