@@ -1,4 +1,4 @@
-import { NOTE2SEMI, mod, accs2semi } from './utils'
+import { NOTE2SEMI, mod, accs2semi, semi2note } from './utils'
 import { NOTES, ACCS } from './symbols'
 import Note from '../Note'
 
@@ -15,7 +15,7 @@ class NoteHelper {
   }
 
   static fromSemi(semi) {
-    let intv = new Note(int2intv(semi))
+    let intv = new Note(semi2note(semi))
     let name = String(intv.name)
     let base = String(intv.base)
     let accs = Number(intv.accs)
