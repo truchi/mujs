@@ -21,6 +21,8 @@ export const accs2semi = (accs) => {
   return i
 }
 
+export const arr2items = (Ctr, arr) => arr.map(e => new Ctr(e))
+
 const zip = (keys, vals) => {
   let ret = {}
 
@@ -34,7 +36,7 @@ export const INTV2SEMI = zip(INTVS, [0, 2, 4, 5, 7, 9, 11])
 export const NOTE2SEMI = zip(NOTES, [0, 2, 4, 5, 7, 9, 11])
 
 export const SEMI2INTV = [
-  `${INTVS[0]}`
+              `${INTVS[0]}`
 , `${ACCS.flat}${INTVS[1]}`
 ,             `${INTVS[1]}`
 , `${ACCS.flat}${INTVS[2]}`

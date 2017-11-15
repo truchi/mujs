@@ -1,5 +1,5 @@
 import { INTVS, NOTES } from './symbols'
-import { SEMI2INTV, factors } from './utils'
+import { SEMI2INTV, factors, arr2items } from './utils'
 import Note from '../Note'
 import Interval from '../Interval'
 import Mode from '../Mode'
@@ -61,14 +61,15 @@ class ScaleHelper {
 }
 
 export const DEFAULT_ROOT  = new Note(NOTES[0])
-export const DEFAULT_INTVS = [
-  SEMI2INTV[2]
-, SEMI2INTV[2]
-, SEMI2INTV[1]
-, SEMI2INTV[2]
-, SEMI2INTV[2]
-, SEMI2INTV[2]
-, SEMI2INTV[1]
-].map(i => new Interval(i))
+export const DEFAULT_INTVS = arr2items(Interval, [
+    SEMI2INTV[2]
+  , SEMI2INTV[2]
+  , SEMI2INTV[1]
+  , SEMI2INTV[2]
+  , SEMI2INTV[2]
+  , SEMI2INTV[2]
+  , SEMI2INTV[1]
+  ]
+)
 
 export default ScaleHelper

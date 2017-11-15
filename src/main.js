@@ -7,5 +7,8 @@ import chords from './dict/chords.yml'
 console.log(scales)
 console.log(chords)
 
+let mode = new Mode()
+console.log(mode.scale())
+
 let scale = new Scale()
 console.log(scale)

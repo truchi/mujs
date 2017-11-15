@@ -1,42 +1,14 @@
-import helper from './helpers/Interval'
+import Item from './Item'
+import Helper from './helpers/Item'
+import { INTVS } from './helpers/symbols'
+import { INTV2SEMI, semi2intv } from './helpers/utils'
 
-class Interval {
-  constructor(arg = '1') {
-    let name = null
-    let base = null
-    let accs = null
-    let semi = null
-
-    if (typeof arg === 'string') {
-      ({ name, base, accs, semi } = helper.parse(arg))
-    } else if (typeof arg === 'number') {
-      ({ name, base, accs, semi } = helper.fromSemi(arg))
-    } else {
-      console.error(`Interval@constructor: arg must be string or number, got:`, arg)
-      throw ''
-    }
-
-    this.name = name
-    this.base = base
-    this.accs = accs
-    this.semi = semi
-  }
-
-  add(intv) {
-    return new Interval(this.semi + intv.semi)
-  }
-
-  sub(intv) {
-    return new Interval(this.semi - intv.semi)
-  }
-
-  clone() {
-    return new Interval(this.name)
-  }
-
-  static clone(intvs) {
-    return intvs.map(intv => intv.clone())
+class Interval extends Item {
+  constructor(arg = INTVS[0]) {
+    super(arg)
   }
 }
+
+Interval.helper = new Helper(Interval, INTVS, INTV2SEMI, semi2intv)
 
 export default Interval

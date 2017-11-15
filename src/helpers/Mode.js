@@ -1,4 +1,5 @@
 import { INTVS, NOTES } from './symbols'
+import { arr2items } from './utils'
 import Note from '../Note'
 import Interval from '../Interval'
 import Scale from '../Scale'
@@ -27,6 +28,6 @@ class ModeHelper {
 }
 
 export const DEFAULT_ROOT  = new Note(NOTES[0])
-export const DEFAULT_INTVS = INTVS.map(i => new Interval(i))
+export const DEFAULT_INTVS = arr2items(Interval, INTVS)
 
 export default ModeHelper
