@@ -27,8 +27,8 @@ class ScaleHelper {
     root     = root.clone()
     intvs    = Interval.clone(intvs)
     let prev = new Interval(INTVS[0])
-    intvs.unshift(prev)
 
+    intvs.unshift(prev)
     intvs = intvs.map(intv => {
       const add = intv.add(prev)
       prev = add
@@ -54,7 +54,7 @@ class ScaleHelper {
       const test    = Array.prototype
         .concat.apply([], Array(l / factor).fill(pattern))
 
-      if (pattern.join(' ') === test.join(' '))
+      if (semis.join(' ') === test.join(' '))
         return factor
     }
   }
