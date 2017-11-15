@@ -1,26 +1,28 @@
 import { INTVS, NOTES } from './symbols'
 import Note from '../Note'
 import Interval from '../Interval'
+import Scale from '../Scale'
 
 class ModeHelper {
-  static scale(intvs) {
-    let prev  = new Interval(INTVS[0])
-    let scale = intvs.map(intv => new Interval(intv.name))
+  static notes(root, intvs) {
+    return intvs.map(intv => root.add(intv))
+  }
 
-    scale.push(prev)
-    scale = scale.map(intv => {
+  static scale(root, intvs) {
+    root      = root.clone()
+    intvs     = Interval.clone(intvs)
+    let prev  = new Interval(INTVS[0])
+
+    intvs.push(prev)
+    intvs = intvs.map(intv => {
       const sub = intv.sub(prev)
       prev = intv
 
       return sub
     })
 
-    scale.shift()
-    return scale
-  }
-
-  static notes(root, intvs) {
-    return intvs.map(intv => root.add(intv))
+    intvs.shift()
+    return new Scale(root, intvs)
   }
 }
 
