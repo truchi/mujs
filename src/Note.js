@@ -25,6 +25,18 @@ class Note {
   add(note) {
     return new Note(this.semi + note.semi)
   }
+
+  sub(note) {
+    return new Note(this.semi - note.semi)
+  }
+
+  clone() {
+    return new Interval(this.name)
+  }
+
+  static clone(intvs) {
+    return intvs.map(intv => intv.clone())
+  }
 }
 
 export default Note

@@ -22,8 +22,20 @@ class Interval {
     this.semi = semi
   }
 
+  add(intv) {
+    return new Interval(this.semi + intv.semi)
+  }
+
   sub(intv) {
     return new Interval(this.semi - intv.semi)
+  }
+
+  clone() {
+    return new Interval(this.name)
+  }
+
+  static clone(intvs) {
+    return intvs.map(intv => intv.clone())
   }
 }
 
