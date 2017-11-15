@@ -10,6 +10,8 @@ import Note from './Note'
 import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
+import Mode from './Mode'
+import Interval from './Interval'
 
 export {
   symbols
