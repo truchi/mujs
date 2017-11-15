@@ -1,4 +1,4 @@
-import { NOTES, INTVS } from './symbols'
+import { INTVS, NOTES } from './symbols'
 import Note from '../Note'
 import Interval from '../Interval'
 
