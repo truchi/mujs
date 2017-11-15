@@ -16,4 +16,15 @@ module.exports = {
     filename: 'app.js'
   , path: path.resolve(__dirname, 'dist')
   }
+, module: {
+  rules: [
+    {
+      test: /\.yml$/
+    , use: [
+        { loader: 'json-loader' }
+      , { loader: 'yaml-loader' }
+      ]
+    }
+  ]
+}
 }
