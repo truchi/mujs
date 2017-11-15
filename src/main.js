@@ -1,12 +1,25 @@
-import Dict from './Dict'
+import symbols from './helpers/symbols'
+import utils from './helpers/utils'
+import ItemHelper from './helpers/Item'
+import ModeHelper from './helpers/Mode'
+import ScaleHelper from './helpers/Scale'
+import chords from './dict/chords.yml'
+import scales from './dict/scales.yml'
+import Item from './Item'
+import Note from './Note'
 import Mode from './Mode'
-import Interval from './Interval'
+import Scale from './Scale'
+import Dict from './Dict'
 
-
-let mode2 = new Mode(undefined, '1 2 3 4 5 6 ♯♯6'.split(' ').map(i => new Interval(i)))
-let mode  = new Mode()
-console.log(Dict.get(mode));
-console.log(Dict.get(mode2));
-console.log(Dict.similar(mode));
-console.log(Dict.similar(mode2));
-console.log(Dict.scales());
+export {
+  symbols
+, utils
+, ItemHelper
+, ModeHelper
+, ScaleHelper
+, Item
+, Note
+, Mode
+, Scale
+, Dict
+}

@@ -13,7 +13,7 @@ module.exports = {
   , useLocalIp: true
   }
 , output: {
-    filename: 'app.js'
+    filename: 'mujs.js'
   , path: path.resolve(__dirname, 'dist')
   }
 , module: {
