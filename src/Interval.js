@@ -21,6 +21,10 @@ class Interval {
     this.accs = accs
     this.semi = semi
   }
+
+  sub(intv) {
+    return new Interval(this.semi - intv.semi)
+  }
 }
 
 export default Interval
