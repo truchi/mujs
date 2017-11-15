@@ -3,18 +3,19 @@ import Interval from '../Interval'
 
 class ModeHelper {
   static scale(intvs) {
-    let prev = new Interval(INTVS[0])
+    let prev  = new Interval(INTVS[0])
+    let scale = intvs.map(intv => new Interval(intv.name))
 
-    intvs.push(prev)
-    intvs = intvs.map(intv => {
+    scale.push(prev)
+    scale = scale.map(intv => {
       const sub = intv.sub(prev)
       prev = intv
 
       return sub
     })
 
-    intvs.shift()
-    return intvs
+    scale.shift()
+    return scale
   }
 }
 
