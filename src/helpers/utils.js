@@ -2,6 +2,17 @@ import { ACCS, INTVS, NOTES } from './symbols'
 
 export const mod = (i, j) => ((i % j) + j) % j
 
+export const factors = (num) => {
+  let factors = []
+
+  for (let i = 1; i <= Math.abs(num/2); ++i) {
+    if (num % i === 0) factors.push(i)
+  }
+
+  factors.push(num)
+  return factors
+}
+
 export const accs2semi = (accs) => {
   accs = accs.replace(ACCS.natural, '')
   let i = accs.length
@@ -22,7 +33,7 @@ const zip = (keys, vals) => {
 export const INTV2SEMI = zip(INTVS, [0, 2, 4, 5, 7, 9, 11])
 export const NOTE2SEMI = zip(NOTES, [0, 2, 4, 5, 7, 9, 11])
 
-const SEMI2INTV = [
+export const SEMI2INTV = [
   `${INTVS[0]}`
 , `${ACCS.flat}${INTVS[1]}`
 ,             `${INTVS[1]}`
@@ -37,7 +48,7 @@ const SEMI2INTV = [
 ,             `${INTVS[6]}`
 ]
 
-const SEMI2NOTE = [
+export const SEMI2NOTE = [
   `${NOTES[0]}`
 , `${NOTES[0]}${ACCS.sharp}`
 , `${NOTES[1]}`
