@@ -7,6 +7,8 @@ import CHORDS from './dict/chords.yml'
 
 let DICT  = []
 let MODES = []
+let EQUALS  = {}
+let SIMILAR = {}
 
 class Dict {
   static init() {
@@ -16,6 +18,22 @@ class Dict {
     console.log(DICT);
 
     return Dict
+  }
+
+  static get(mode) {
+    let i = EQUALS[mode.toString()]
+    if (i)
+      return MODES[i]
+  }
+
+  static similar(mode) {
+    let equals = Dict.get(mode)
+    if (equals)
+      return equals
+
+    let i = SIMILAR[mode.toString(true)]
+    if (i)
+      return MODES[i]
   }
 
   static _initScales() {
@@ -60,6 +78,9 @@ class Dict {
     MODES.forEach((mode1, i) => {
       found[i] = found[i] || []
 
+      EQUALS [mode1.toString()    ] = i
+      SIMILAR[mode1.toString(true)] = i
+
       MODES.forEach((mode2, j) => {
         if (i === j) return
 
@@ -76,5 +97,7 @@ class Dict {
     })
   }
 }
+
+Dict.init()
 
 export default Dict

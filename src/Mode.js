@@ -22,6 +22,12 @@ class Mode {
 
     return true
   }
+
+  toString(semi = false) {
+    return this.intvs
+      .map(intv => semi ? intv.semi : intv.name)
+      .join(' ')
+  }
 }
 
 export default Mode
