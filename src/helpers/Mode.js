@@ -17,6 +17,10 @@ class ModeHelper {
     scale.shift()
     return scale
   }
+
+  static notes(root, intvs) {
+    return intvs.map(intv => root.add(intv))
+  }
 }
 
 export default ModeHelper

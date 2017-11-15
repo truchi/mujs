@@ -10,10 +10,8 @@ class Mode {
   constructor(root = defaultNote, intvs = defaultIntvs) {
     this.root  = root
     this.intvs = intvs
-
     this.scale = helper.scale(this.intvs)
-    // TODO
-    // this.notes
+    this.notes = helper.notes(this.root, this.intvs)
   }
 }
 

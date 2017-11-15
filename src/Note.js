@@ -21,6 +21,10 @@ class Note {
     this.accs = accs
     this.semi = semi
   }
+
+  add(note) {
+    return new Note(this.semi + note.semi)
+  }
 }
 
 export default Note
