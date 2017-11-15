@@ -17,10 +17,10 @@ class IntervalHelper {
 
   static fromSemi(semi) {
     let intv = new Interval(semi2intv(semi))
-    let name = new String(intv.name)
-    let base = new String(intv.base)
-    let accs = new Number(intv.accs)
-        semi = new Number(intv.semi)
+    let name = String(intv.name)
+    let base = String(intv.base)
+    let accs = Number(intv.accs)
+        semi = Number(intv.semi)
 
     return { name, base, accs, semi }
   }
