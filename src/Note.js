@@ -31,11 +31,11 @@ class Note {
   }
 
   clone() {
-    return new Interval(this.name)
+    return new Note(this.name)
   }
 
-  static clone(intvs) {
-    return intvs.map(intv => intv.clone())
+  static clone(notes) {
+    return notes.map(note => note.clone())
   }
 }
 
