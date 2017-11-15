@@ -22,6 +22,7 @@ export const accs2semi = (accs) => {
 }
 
 export const arr2items = (Ctr, arr) => arr.map(e => new Ctr(e))
+export const str2items = (Ctr, str) => arr2items(Ctr, str.split(' '))
 
 const zip = (keys, vals) => {
   let ret = {}

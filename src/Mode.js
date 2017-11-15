@@ -10,6 +10,18 @@ class Mode {
   scale() {
     return helper.scale(this.root, this.intvs)
   }
+
+  doesInclude(mode) {
+    if (this.intvs.length <= mode.intvs.length) return false
+
+    let semis = this.intvs.map(intv => intv.semi)
+
+    for (let intv of mode.intvs) {
+      if(!semis.includes(intv.semi)) return false
+    }
+
+    return true
+  }
 }
 
 export default Mode
