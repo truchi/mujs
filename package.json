@@ -2,6 +2,7 @@
   "name": "mujs",
   "version": "0.1.0",
   "description": "♭♮♯",
+  "main": "dist/mujs.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --open"
