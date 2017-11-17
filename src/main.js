@@ -1,3 +1,5 @@
+import symbols from './helpers/symbols'
+import utils from './helpers/utils'
 import ItemHelper from './helpers/Item'
 import ModeHelper from './helpers/Mode'
 import ScaleHelper from './helpers/Scale'
@@ -12,7 +14,9 @@ import Scale from './Scale'
 import Dict from './Dict'
 
 export {
-  ItemHelper
+  symbols
+, utils
+, ItemHelper
 , ModeHelper
 , ScaleHelper
 , chords
