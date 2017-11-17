@@ -16,6 +16,7 @@ module.exports = {
 , output: {
     filename: 'mujs.js'
   , path: path.resolve(__dirname, 'dist')
+  , library: 'MuJS'
   }
 , module: {
   rules: [{

@@ -12,7 +12,7 @@ import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
 
-export {
+export default {
   symbols
 , utils
 , ItemHelper
