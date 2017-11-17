@@ -1,4 +1,5 @@
 import helper, { DEFAULT_ROOT, DEFAULT_INTVS } from './helpers/Mode'
+import ScaleHelper from './helpers/Scale'
 
 class Mode {
   constructor(root = DEFAULT_ROOT, intvs = DEFAULT_INTVS) {
@@ -29,5 +30,7 @@ class Mode {
       .join(' ')
   }
 }
+
+ScaleHelper.Mode = Mode
 
 export default Mode

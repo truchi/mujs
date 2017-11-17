@@ -2,7 +2,6 @@ import { INTVS, NOTES } from './symbols'
 import { arr2items } from './utils'
 import Note from '../Note'
 import Interval from '../Interval'
-import Scale from '../Scale'
 
 class ModeHelper {
   static notes(root, intvs) {
@@ -23,7 +22,7 @@ class ModeHelper {
     })
 
     intvs.shift()
-    return new Scale(root, intvs)
+    return new Mode.Scale(root, intvs)
   }
 }
 

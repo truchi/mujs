@@ -2,7 +2,6 @@ import { INTVS, NOTES } from './symbols'
 import { SEMI2INTV, factors, arr2items } from './utils'
 import Note from '../Note'
 import Interval from '../Interval'
-import Mode from '../Mode'
 
 class ScaleHelper {
   static notes(modes) {
@@ -41,7 +40,7 @@ class ScaleHelper {
     })
 
     intvs.pop()
-    return new Mode(root, intvs)
+    return new ScaleHelper.Mode(root, intvs)
   }
 
   static symmetry(intvs) {
