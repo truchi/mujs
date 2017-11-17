@@ -28,4 +28,4 @@ const MuJS = {
 , Dict: Dict
 }
 
-export default MujS
+export default MuJS
