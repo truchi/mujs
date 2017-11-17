@@ -1,4 +1,5 @@
 const path = require('path')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 module.exports = {
   entry: './src/main.js'
@@ -17,14 +18,18 @@ module.exports = {
   , path: path.resolve(__dirname, 'dist')
   }
 , module: {
-  rules: [
-    {
+  rules: [{
       test: /\.yml$/
     , use: [
         { loader: 'json-loader' }
       , { loader: 'yaml-loader' }
       ]
-    }
+    }]
+  }
+, plugins: [
+    new CircularDependencyPlugin({
+      exclude: /node_modules/
+    , failOnError: true
+    })
   ]
-}
 }
