@@ -17,6 +17,7 @@ module.exports = {
     filename: 'mujs.js'
   , path: path.resolve(__dirname, 'dist')
   , library: 'MuJS'
+  , libraryTarget: 'umd'
   }
 , module: {
   rules: [{
