@@ -1,5 +1,14 @@
 import { ACCS, INTVS, NOTES } from './symbols'
 
+const zip = (keys, vals) => {
+  let ret = {}
+
+  for (let i in keys)
+    ret[keys[i]] = vals[i]
+
+  return ret
+}
+
 export const mod = (i, j) => ((i % j) + j) % j
 
 export const factors = (num) => {
@@ -23,15 +32,6 @@ export const accs2semi = (accs) => {
 
 export const arr2items = (Ctr, arr) => arr.map(e => new Ctr(e))
 export const str2items = (Ctr, str) => arr2items(Ctr, str.split(' '))
-
-const zip = (keys, vals) => {
-  let ret = {}
-
-  for (let i in keys)
-    ret[keys[i]] = vals[i]
-
-  return ret
-}
 
 export const INTV2SEMI = zip(INTVS, [0, 2, 4, 5, 7, 9, 11])
 export const NOTE2SEMI = zip(NOTES, [0, 2, 4, 5, 7, 9, 11])
@@ -68,3 +68,17 @@ export const SEMI2NOTE = [
 
 export const semi2intv = (int) => SEMI2INTV[mod(int, 12)]
 export const semi2note = (int) => SEMI2NOTE[mod(int, 12)]
+
+export default {
+  mod      : mod
+, factors  : factors
+, accs2semi: accs2semi
+, arr2items: arr2items
+, str2items: str2items
+, INTV2SEMI: INTV2SEMI
+, NOTE2SEMI: NOTE2SEMI
+, SEMI2INTV: SEMI2INTV
+, SEMI2NOTE: SEMI2NOTE
+, semi2intv: semi2intv
+, semi2note: semi2note
+}
