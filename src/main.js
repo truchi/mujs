@@ -12,18 +12,18 @@ import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
 
-export default {
-  symbols
-, utils
-, ItemHelper
-, ModeHelper
-, ScaleHelper
-, chords
-, scales
-, Item
-, Interval
-, Note
-, Mode
-, Scale
-, Dict
+export default const MuJS = {
+  symbols: symbols
+, utils: utils
+, ItemHelper: ItemHelper
+, ModeHelper: ModeHelper
+, ScaleHelper: ScaleHelper
+, chords: chords
+, scales: scales
+, Item: Item
+, Interval: Interval
+, Note: Note
+, Mode: Mode
+, Scale: Scale
+, Dict: Dict
 }
