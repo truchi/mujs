@@ -12,7 +12,7 @@ import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
 
-export default const MuJS = {
+const MuJS = {
   symbols: symbols
 , utils: utils
 , ItemHelper: ItemHelper
@@ -27,3 +27,5 @@ export default const MuJS = {
 , Scale: Scale
 , Dict: Dict
 }
+
+export default MujS
