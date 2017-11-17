@@ -7,11 +7,10 @@ import chords from './dict/chords.yml'
 import scales from './dict/scales.yml'
 import Item from './Item'
 import Note from './Note'
+import Interval from './Interval'
 import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
-import Mode from './Mode'
-import Interval from './Interval'
 
 export {
   symbols
@@ -19,8 +18,11 @@ export {
 , ItemHelper
 , ModeHelper
 , ScaleHelper
+, chords
+, scales
 , Item
 , Note
+, Interval
 , Mode
 , Scale
 , Dict
