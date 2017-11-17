@@ -5,6 +5,10 @@ import Interval from '../Interval'
 import Mode from '../Mode'
 
 class ScaleHelper {
+  static notes(modes) {
+    return Note.clone(modes[0].notes)
+  }
+
   static modes(root, intvs) {
     root           = root.clone()
     intvs          = Interval.clone(intvs)
@@ -38,10 +42,6 @@ class ScaleHelper {
 
     intvs.pop()
     return new Mode(root, intvs)
-  }
-
-  static notes(modes) {
-    return Note.clone(modes[0].notes)
   }
 
   static symmetry(intvs) {
