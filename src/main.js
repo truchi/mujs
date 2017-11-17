@@ -8,7 +8,6 @@ import scales from './dict/scales.yml'
 import Item from './Item'
 import Interval from './Interval'
 import Note from './Note'
-import Interval from './Interval'
 import Mode from './Mode'
 import Scale from './Scale'
 import Dict from './Dict'
@@ -24,7 +23,6 @@ export {
 , Item
 , Interval
 , Note
-, Interval
 , Mode
 , Scale
 , Dict
