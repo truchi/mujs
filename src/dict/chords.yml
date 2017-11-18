@@ -1,4 +1,4 @@
-- name: Suspended
+- name: sus
   intervals: 2 4 4
   modes:
   - name: sus2

@@ -40,11 +40,11 @@ class Dict {
 
   static _initScales() {
     DICT =
-      SCALES
-        .map(scale => Object.assign(scale, { type: 'mode' }))
+      CHORDS
+        .map(chord => Object.assign(chord, { type: 'chord' }))
       .concat(
-        CHORDS
-          .map(chord => Object.assign(chord, { type: 'chord' }))
+        SCALES
+          .map(scale => Object.assign(scale, { type: 'mode' }))
       )
       .map(scale => {
         let name  = scale.name
