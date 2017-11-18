@@ -12,6 +12,14 @@ class Mode {
     return helper.scale(this.root, this.intvs)
   }
 
+  getDegree(intv) {
+    for(let i of this.intvs) {
+      if (i.semi === intv.semi) return i.clone()
+    }
+
+    return null
+  }
+
   doesInclude(mode) {
     if (this.intvs.length <= mode.intvs.length) return false
 
