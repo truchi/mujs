@@ -24,10 +24,6 @@ class Item {
     this.semi = semi
   }
 
-  test() {
-    return new this.constructor()
-  }
-
   add(item) {
     return new this.constructor(this.semi + item.semi)
   }
