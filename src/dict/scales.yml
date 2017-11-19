@@ -34,7 +34,7 @@
   - name: Locrian
     intervals: 1 ♭2 ♭3 4 ♭5 ♭6 ♭7
 - name: Double Harmonic Major
-  intervals: 2 ♭3 2 2 ♭2 ♭3 ♭2
+  intervals: ♭2 ♭3 ♭2 2 ♭2 ♭3 ♭2
   modes:
   - name: Double Harmonic Major / Ionian ♭9 ♭13
     intervals: 1 ♭2 3 4 5 ♭6 7
@@ -43,7 +43,7 @@
   - name: Double Harmonic Major n°3
     intervals: 1 ♭2 ♯2 3 5 ♭6 ♭♭7
   - name: Hungarian Minor
-    intervals: 1 ♭2 3 ♯4 5 ♭6 7
+    intervals: 1 2 ♭3 ♯4 5 ♭6 7
   - name: Oriental / Mixolydian ♭5 ♭9
     intervals: 1 ♭2 3 4 ♭5 6 ♭7
   - name: Ionian ♯5 ♯9
