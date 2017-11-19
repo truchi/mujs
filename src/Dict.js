@@ -56,12 +56,19 @@ class Dict {
         scale.type = type
         DICT.push(scale)
 
-        scale.modes = modes.map(mode => {
-          let name = mode.name
+        scale.modes = scale.modes.map((m, i) => {
+          let mode = modes[i]
 
-          mode       = new Mode(undefined, str2items(Interval, mode.intervals))
-          mode.name  = name
-          mode.type  = type
+          if (!mode) {
+            mode      = m
+            mode.name = `${scale.name} n°${i + 1}`
+          } else {
+            let name  = mode.name
+            mode      = new Mode(undefined, str2items(Interval, mode.intervals))
+            mode.name = name
+          }
+
+          mode.type     = type
           mode.includes = []
           mode.included = []
           ;((mode, scale) => mode.scale = () => scale)(mode, scale)
