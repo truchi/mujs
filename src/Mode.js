@@ -1,5 +1,6 @@
 import helper, { DEFAULT_ROOT, DEFAULT_INTVS } from './helpers/Mode'
 import ScaleHelper from './helpers/Scale'
+import Interval from './Interval'
 
 class Mode {
   constructor(root = DEFAULT_ROOT, intvs = DEFAULT_INTVS) {
@@ -36,6 +37,10 @@ class Mode {
     return this.intvs
       .map(intv => semi ? intv.semi : intv.name)
       .join(' ')
+  }
+
+  clone() {
+    return new Mode(this.root.clone(), Interval.clone(this.intvs))
   }
 }
 
