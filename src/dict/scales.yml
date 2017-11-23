@@ -33,7 +33,7 @@
 - name: Double Harmonic Major
   intervals: ♭2 ♭3 ♭2 2 ♭2 ♭3 ♭2
   modes:
-  - name: Double Harmonic Major / Ionian ♭9 ♭13
+  - name: Ionian ♭9 ♭13
     intervals: 1 ♭2 3 4 5 ♭6 7
   - name: Lydian ♯9 ♯13
     intervals: 1 ♯2 3 ♯4 5 ♯6 7
@@ -50,7 +50,7 @@
 - name: Harmonic Major
   intervals: 2 2 ♭2 2 ♭2 ♭3 ♭2
   modes:
-  - name: Harmonic Major / Ionian ♭13
+  - name: Ionian ♭13
     intervals: 1 2 3 4 5 ♭6 7
   - name: Dorian ♭5
     intervals: 1 2 ♭3 4 ♭5 6 ♭7
@@ -67,7 +67,7 @@
 - name: Harmonic Minor
   intervals: 2 ♭2 2 2 ♭2 ♭3 ♭2
   modes:
-  - name: Harmonic Minor / Aeolian ♮7
+  - name: Aeolian ♮7
     intervals: 1 2 ♭3 4 5 ♭6 7
   - name: Locrian ♮13
     intervals: 1 ♭2 ♭3 4 ♭5 6 ♭7
@@ -84,7 +84,7 @@
 - name: Melodic Minor
   intervals: 2 ♭2 2 2 2 2 ♭2
   modes:
-  - name: Melodic Minor / Dorian ♮7
+  - name: Dorian ♮7
     intervals: 1 2 ♭3 4 5 6 7
   - name: Phrygian ♮13 / Dorian ♭2
     intervals: 1 ♭2 ♭3 4 5 6 ♭7
