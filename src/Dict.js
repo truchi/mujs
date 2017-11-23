@@ -24,8 +24,11 @@ class Dict {
 
   static get(mode) {
     let i = EQUALS[mode.toString()]
-    if (i)
+    if (i) {
       return MODES[i]
+    } else {
+      return Dict._safen(mode)
+    }
   }
 
   static similar(mode) {
@@ -36,6 +39,16 @@ class Dict {
     let i = SIMILAR[mode.toString(true)]
     if (i)
       return MODES[i]
+  }
+
+  static _safen(mode) {
+    mode          = mode.clone()
+    mode.name     = ''
+    mode.includes = []
+    mode.included = []
+    mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
+
+    return mode
   }
 
   static _initScales() {
