@@ -105,8 +105,8 @@
     intervals: 1 2 ♭3 4 ♭5 ♯5 ♭♭7 7
   - name: Half Whole (7)
     intervals: 1 ♭2 ♯2 3 ♭5 5 6 ♭7
-- name: Diatonic
+- name: Chromatic
   intervals: ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2 ♭2
   modes:
-  - name: Diatonic
+  - name: Chromatic
     intervals: 1 ♭2 2 ♭3 3 4 ♯4 5 ♯5 ♭6 6 ♭7 7
