@@ -1,5 +1,5 @@
 - name: sus
-  intervals: 2 4 4
+  intervals: 4 2 4
   modes:
   - name: sus4
     intervals: 1 4 5
