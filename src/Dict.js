@@ -82,6 +82,7 @@ class Dict {
           }
 
           mode.type     = type
+          mode.modes    = modes
           mode.includes = []
           mode.included = []
           ;((mode, scale) => mode.scale = () => scale)(mode, scale)
