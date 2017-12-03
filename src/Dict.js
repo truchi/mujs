@@ -82,7 +82,6 @@ class Dict {
           }
 
           mode.type     = type
-          mode.modes    = modes
           mode.similars = []
           mode.includes = []
           mode.included = []
