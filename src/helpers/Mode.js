@@ -22,7 +22,7 @@ class ModeHelper {
     })
 
     intvs.shift()
-    return new Mode.Scale(root, intvs)
+    return new ModeHelper.Scale(root, intvs)
   }
 }
 
