@@ -5,10 +5,10 @@ import { str2items } from './helpers/utils'
 import SCALES from './dict/scales.yml'
 import CHORDS from './dict/chords.yml'
 
-let DICT  = []
-let MODES = []
-let EQUALS  = {}
-let SIMILAR = {}
+let DICT     = []
+let MODES    = []
+let EQUALS   = {}
+let SIMILARS = {}
 
 class Dict {
   static init() {
@@ -22,8 +22,13 @@ class Dict {
     return DICT
   }
 
+  static modes() {
+    return MODES
+  }
+
   static get(mode) {
     let i = EQUALS[mode.toString()]
+
     if (i) {
       return MODES[i]
     } else {
@@ -31,23 +36,17 @@ class Dict {
     }
   }
 
-  static similar(mode) {
-    let equals = Dict.get(mode)
-    if (equals)
-      return equals
-
-    let i = SIMILAR[mode.toString(true)]
-    if (i)
-      return MODES[i]
-  }
-
   static _safen(mode) {
     mode          = mode.clone()
     mode.name     = ''
-    mode.includes = []
-    mode.included = []
-    mode.similars = []
+    mode.includes = MODES.filter(_mode =>  mode.doesInclude(_mode))
+    mode.included = MODES.filter(_mode => _mode.doesInclude( mode))
     mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
+
+    const similarId = SIMILARS[mode.toString(true)]
+    mode.similars   = similarId
+      ? [MODES[similarId]]
+      : []
 
     return mode
   }
@@ -102,8 +101,12 @@ class Dict {
     MODES.forEach((mode1, i) => {
       found[i] = found[i] || []
 
-      EQUALS [mode1.toString()    ] = i
-      SIMILAR[mode1.toString(true)] = i
+      const id = mode1.toString()
+      if (EQUALS[id]) {
+        console.warn('Found equal modes:', EQUALS[id], mode1)
+      }
+      EQUALS[id] = i
+      SIMILARS[mode1.toString(true)] = i
 
       MODES.forEach((mode2, j) => {
         if (i === j) return
