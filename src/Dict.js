@@ -43,10 +43,11 @@ class Dict {
     mode.included = MODES.filter(_mode => _mode.doesInclude( mode))
     mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
 
-    const similarId = SIMILARS[mode.toString(true)]
-    mode.similars   = similarId
-      ? [MODES[similarId]]
-      : []
+    const i = SIMILARS[mode.toString(true)]
+    if (i) {
+      let scale = MODES[i].scale()
+      ;((mode, scale) => mode.scale = () => scale)(mode, scale)
+    }
 
     return mode
   }
@@ -84,7 +85,6 @@ class Dict {
           mode.type     = type
           mode.includes = []
           mode.included = []
-          mode.similars = []
           ;((mode, scale) => mode.scale = () => {
             let i       = scale.modes.indexOf(mode)
             scale.modes = scale.modes.slice(i).concat(scale.modes.slice(0, i))
