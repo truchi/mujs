@@ -46,6 +46,7 @@ class Dict {
     mode.name     = ''
     mode.includes = []
     mode.included = []
+    mode.similars = []
     mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
 
     return mode
@@ -82,9 +83,9 @@ class Dict {
           }
 
           mode.type     = type
-          mode.similars = []
           mode.includes = []
           mode.included = []
+          mode.similars = []
           ;((mode, scale) => mode.scale = () => scale)(mode, scale)
           MODES.push(mode)
 
