@@ -85,7 +85,12 @@ class Dict {
           mode.includes = []
           mode.included = []
           mode.similars = []
-          ;((mode, scale) => mode.scale = () => scale)(mode, scale)
+          ;((mode, scale) => mode.scale = () => {
+            let i       = scale.modes.indexOf(mode)
+            scale.modes = scale.modes.slice(i).concat(scale.modes.slice(0, i))
+
+            return scale
+          })(mode, scale)
           MODES.push(mode)
 
           return mode
