@@ -29,7 +29,7 @@ class Dict {
   static get(mode) {
     let i = EQUALS[mode.toString()]
 
-    if (i) {
+    if (typeof i !== 'undefined') {
       return MODES[i]
     } else {
       return Dict._safen(mode)
