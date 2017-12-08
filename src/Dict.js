@@ -39,14 +39,14 @@ class Dict {
   static _safen(mode) {
     mode          = mode.clone()
     mode.name     = ''
+    mode.similars = []
     mode.includes = MODES.filter(_mode =>  mode.doesInclude(_mode))
     mode.included = MODES.filter(_mode => _mode.doesInclude( mode))
     mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
 
     const i = SIMILARS[mode.toString(true)]
     if (i) {
-      let scale = MODES[i].scale()
-      ;((mode, scale) => mode.scale = () => scale)(mode, scale)
+      mode.similars.push(MODES[i])
     }
 
     return mode
@@ -83,14 +83,10 @@ class Dict {
           }
 
           mode.type     = type
+          mode.similars = []
           mode.includes = []
           mode.included = []
-          ;((mode, scale) => mode.scale = () => {
-            let i       = scale.modes.indexOf(mode)
-            scale.modes = scale.modes.slice(i).concat(scale.modes.slice(0, i))
-
-            return scale
-          })(mode, scale)
+          ;((mode, scale) => mode.scale = () => scale)(mode, scale)
           MODES.push(mode)
 
           return mode
