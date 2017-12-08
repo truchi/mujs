@@ -90,13 +90,13 @@ class Dict {
           mode.included = []
 
           mode.scale = Dict._scale(scale, i)
-          mode.clone = Dict._cloneMode(mode, mode.clone)
+          mode.clone = Dict._modeClone(mode, mode.clone)
           MODES.push(mode)
 
           return mode
         })
 
-        scale.clone = Dict._cloneScale(scale, scale.clone)
+        scale.clone = Dict._scaleClone(scale, scale.clone)
 
         return scale
       })
@@ -141,7 +141,7 @@ class Dict {
     }
   }
 
-  static _cloneMode(mode, clone) {
+  static _modeClone(mode, clone) {
     return () => {
       const name     = scale.name
       const type     = scale.type
@@ -161,7 +161,7 @@ class Dict {
     }
   }
 
-  static _cloneScale(scale, clone) {
+  static _scaleClone(scale, clone) {
     return () => {
       const name = scale.name
       const type = scale.type
