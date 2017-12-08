@@ -27,29 +27,35 @@ class Dict {
   }
 
   static get(mode) {
-    let i = EQUALS[mode.toString()]
+    mode = mode.clone()
 
+    const i = EQUALS[mode.toString()]
     if (typeof i !== 'undefined') {
       return MODES[i]
+
     } else {
-      return Dict._safen(mode)
+      const j = SIMILARS[mode.toString(true)]
+      if (typeof j !== 'undefined') {
+        const similar = MODES[j]
+        const intvs   = mode.intvs
+
+        mode       = similar.clone()
+        mode.name  = `~ ${similar.name}`
+        mode.intvs = intvs
+
+        return mode
+
+      } else {
+        return Dict._safen(mode)
+      }
     }
   }
 
   static _safen(mode) {
-    mode          = mode.clone()
     mode.name     = ''
+    mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
     mode.includes = MODES.filter(_mode =>  mode.doesInclude(_mode))
     mode.included = MODES.filter(_mode => _mode.doesInclude( mode))
-    mode.type     = mode.intvs.length > 4 ? 'mode' : 'chord'
-
-    mode.similars = []
-    const i       = SIMILARS[mode.toString(true)]
-    if (typeof i !== 'undefined') {
-      mode.similars.push(MODES[i])
-    }
-
-    mode.clone = Dict._cloneFn(mode, mode.clone)
 
     return mode
   }
@@ -85,7 +91,6 @@ class Dict {
           }
 
           mode.type     = type
-          mode.similars = []
           mode.includes = []
           mode.included = []
 
@@ -151,7 +156,6 @@ class Dict {
       const scale    = mode.scale
       const clone    = mode.clone
 
-      mode.similars = similars
       let newMode      = originalClone.bind(mode)()
       newMode.name     = name
       newMode.type     = type
