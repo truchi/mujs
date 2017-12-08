@@ -151,16 +151,16 @@ class Dict {
       const scale    = mode.scale
       const clone    = mode.clone
 
-      mode          = originalClone.bind(mode)()
-      mode.name     = name
-      mode.type     = type
       mode.similars = similars
-      mode.includes = includes
-      mode.included = included
-      mode.scale    = scale
-      mode.clone    = clone
+      let newMode      = originalClone.bind(mode)()
+      newMode.name     = name
+      newMode.type     = type
+      newMode.includes = includes
+      newMode.included = included
+      newMode.scale    = scale
+      newMode.clone    = clone
 
-      return mode
+      return newMode
     }
   }
 
@@ -168,14 +168,16 @@ class Dict {
     return () => {
       const name  = scale.name
       const type  = scale.type
+      const modes = scale.modes
       const clone = scale.clone
 
-      scale       = originalClone.bind(scale)()
-      scale.name  = name
-      scale.type  = type
-      scale.clone = clone
+      let newScale   = originalClone.bind(scale)()
+      newScale.name  = name
+      newScale.type  = type
+      newScale.modes = modes
+      newScale.clone = clone
 
-      return scale
+      return newScale
     }
   }
 }
