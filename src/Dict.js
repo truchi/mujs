@@ -88,8 +88,9 @@ class Dict {
           mode.similars = []
           mode.includes = []
           mode.included = []
-          mode.scale    = Dict._scale(scale, i)
-          mode.clone    = Dict._cloneMode(mode, mode.clone)
+
+          mode.scale = Dict._scale(scale, i)
+          mode.clone = Dict._cloneMode(mode, mode.clone)
           MODES.push(mode)
 
           return mode
@@ -142,12 +143,16 @@ class Dict {
 
   static _cloneMode(mode, clone) {
     return () => {
+      const name     = scale.name
+      const type     = scale.type
       const similars = mode.similars
       const includes = mode.includes
       const included = mode.included
 
       mode = clone.bind(mode)()
 
+      mode.name     = name
+      mode.type     = type
       mode.similars = similars
       mode.includes = includes
       mode.included = included
