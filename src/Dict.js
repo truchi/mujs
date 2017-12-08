@@ -88,7 +88,7 @@ class Dict {
           mode.similars = []
           mode.includes = []
           mode.included = []
-          ;((mode, scale) => mode.scale = () => scale)(mode, scale)
+          mode.scale = Dict._scaleFn(scale)
           mode.clone = Dict._cloneFn(mode, mode.clone)
           MODES.push(mode)
 
@@ -126,6 +126,10 @@ class Dict {
         }
       })
     })
+  }
+
+  static _scaleFn(scale) {
+    return () => scale
   }
 
   static _cloneFn(mode, clone) {
