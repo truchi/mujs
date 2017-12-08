@@ -133,17 +133,17 @@ class Dict {
 
   static _scale(scale, i) {
     return () => {
-      const modes = scale.modes.map(mode => mode)
-      scale       = scale.clone()
-      scale.modes = modes.slice(i).concat(modes.slice(0, i))
+      const modes    = scale.modes.map(mode => mode)
 
-      return scale
+      let newScale   = scale.clone()
+      newScale.modes = modes.slice(i).concat(modes.slice(0, i))
+
+      return newScale
     }
   }
 
   static _modeClone(mode, originalClone) {
     return () => {
-      const similars = mode.similars
       const name     = mode.name
       const type     = mode.type
       const includes = mode.includes
