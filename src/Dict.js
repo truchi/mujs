@@ -141,33 +141,39 @@ class Dict {
     }
   }
 
-  static _modeClone(mode, clone) {
+  static _modeClone(mode, originalClone) {
     return () => {
       const similars = mode.similars
       const name     = mode.name
       const type     = mode.type
       const includes = mode.includes
       const included = mode.included
+      const scale    = mode.scale
+      const clone    = mode.clone
 
-      mode          = clone.bind(mode)()
+      mode          = originalClone.bind(mode)()
       mode.name     = name
       mode.type     = type
       mode.similars = similars
       mode.includes = includes
       mode.included = included
+      mode.scale    = scale
+      mode.clone    = clone
 
       return mode
     }
   }
 
-  static _scaleClone(scale, clone) {
+  static _scaleClone(scale, originalClone) {
     return () => {
-      const name = scale.name
-      const type = scale.type
+      const name  = scale.name
+      const type  = scale.type
+      const clone = scale.clone
 
-      scale      = clone.bind(scale)()
-      scale.name = name
-      scale.type = type
+      scale       = originalClone.bind(scale)()
+      scale.name  = name
+      scale.type  = type
+      scale.clone = clone
 
       return scale
     }
