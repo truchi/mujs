@@ -88,12 +88,14 @@ class Dict {
           mode.similars = []
           mode.includes = []
           mode.included = []
-          mode.scale    = Dict._scaleFn(scale)
-          mode.clone    = Dict._cloneFn(mode, mode.clone)
+          mode.scale    = Dict._scale(scale, i)
+          mode.clone    = Dict._cloneMode(mode, mode.clone)
           MODES.push(mode)
 
           return mode
         })
+
+        scale.clone = Dict._cloneScale(scale, scale.clone)
 
         return scale
       })
@@ -128,11 +130,17 @@ class Dict {
     })
   }
 
-  static _scaleFn(scale) {
-    return () => scale
+  static _scale(scale, i) {
+    return () => {
+      const modes = scale.modes.map(mode => mode)
+      scale       = scale.clone()
+      scale.modes = modes.slice(i).concat(modes.slice(0, i))
+
+      return scale
+    }
   }
 
-  static _cloneFn(mode, clone) {
+  static _cloneMode(mode, clone) {
     return () => {
       const similars = mode.similars
       const includes = mode.includes
@@ -145,6 +153,20 @@ class Dict {
       mode.included = included
 
       return mode
+    }
+  }
+
+  static _cloneScale(scale, clone) {
+    return () => {
+      const name = scale.name
+      const type = scale.type
+
+      scale = clone.bind(scale)()
+
+      scale.name = name
+      scale.type = type
+
+      return scale
     }
   }
 }
