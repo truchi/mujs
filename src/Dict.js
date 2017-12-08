@@ -45,7 +45,7 @@ class Dict {
 
     mode.similars = []
     const i       = SIMILARS[mode.toString(true)]
-    if (i) {
+    if (typeof i !== 'undefined') {
       mode.similars.push(MODES[i])
     }
 
@@ -88,8 +88,8 @@ class Dict {
           mode.similars = []
           mode.includes = []
           mode.included = []
-          mode.scale = Dict._scaleFn(scale)
-          mode.clone = Dict._cloneFn(mode, mode.clone)
+          mode.scale    = Dict._scaleFn(scale)
+          mode.clone    = Dict._cloneFn(mode, mode.clone)
           MODES.push(mode)
 
           return mode
