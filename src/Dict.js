@@ -49,6 +49,8 @@ class Dict {
       mode.similars.push(MODES[i])
     }
 
+    mode.clone = Dict._cloneFn(mode, mode.clone)
+
     return mode
   }
 
@@ -87,6 +89,7 @@ class Dict {
           mode.includes = []
           mode.included = []
           ;((mode, scale) => mode.scale = () => scale)(mode, scale)
+          mode.clone = Dict._cloneFn(mode, mode.clone)
           MODES.push(mode)
 
           return mode
@@ -123,6 +126,22 @@ class Dict {
         }
       })
     })
+  }
+
+  static _cloneFn(mode, clone) {
+    return () => {
+      const similars = mode.similars
+      const includes = mode.includes
+      const included = mode.included
+
+      mode = clone.bind(mode)()
+
+      mode.similars = similars
+      mode.includes = includes
+      mode.included = included
+
+      return mode
+    }
   }
 }
 
