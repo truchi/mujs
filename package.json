@@ -4,7 +4,7 @@
   "description": "♭♮♯",
   "main": "dist/mujs.js",
   "scripts": {
-    "build": "webpack",
+    "dist": "webpack",
     "start": "webpack-dev-server --open"
   },
   "author": "Romain TRUCHI",
