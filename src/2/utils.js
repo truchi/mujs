@@ -1,6 +1,7 @@
 export const modulo = (number, modulo) => ((number % modulo) + modulo) % modulo
 
-__cache = {}
+let __cache = {}
+window.__cache = __cache
 export class Cache {
   static get(key) {
     return __cache[key]
@@ -11,7 +12,7 @@ export class Cache {
   }
 
   static has(key) {
-    return __chache.hasOwnProperty(key)
+    return __cache.hasOwnProperty(key)
   }
 
   static remember(key, fn) {
