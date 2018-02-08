@@ -1,6 +1,4 @@
 import Interval from './Interval'
-import Scale from './Scale'
-import Mode from './Mode'
 import scalesYml from './dict/scales.yml'
 import chordsYml from './dict/chords.yml'
 console.log(scalesYml.concat(chordsYml));
@@ -21,11 +19,10 @@ class Dict {
 
     scalesYml.concat(chordsYml).forEach(scale => {
       let name      = scale.name
-      let intervals = scale.intervals
+      let intervals = scale.intervals.split(' ')
       let modes     = scale.modes
       let modeIds   = []
       let semis     = intervals
-        .split(' ')
         .map(i => new Interval(i))
         .map(i => i.semi)
 
@@ -33,9 +30,8 @@ class Dict {
         if (mode === null) return
 
         let name      = mode.name
-        let intervals = mode.intervals
+        let intervals = mode.intervals.split(' ')
         let semis     = intervals
-          .split(' ')
           .map(i => new Interval(i))
           .map(i => i.semi)
 

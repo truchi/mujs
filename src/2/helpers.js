@@ -39,15 +39,7 @@ const base2semi = (base, symbols) => {
   const key = Object.keys(symbols)
     .find(key => symbols[key] === base)
 
-  return {
-    C: 0,  1: 0
-  , D: 2 , 2: 2
-  , E: 4 , 3: 4
-  , F: 5 , 4: 5
-  , G: 7 , 5: 7
-  , A: 9 , 6: 9
-  , B: 11, 7: 11
-  }[key]
+  return Symbols.semis[key]
 }
 
 /**
@@ -60,3 +52,6 @@ export const parseIntervalName = (str) => {
 export const parseNoteName = (str) => {
   return parseName(str, Symbols.notes)
 }
+
+export const semi2note = (semi) => Symbols.semi2note[modulo(semi, 12)]
+export const semi2intv = (semi) => Symbols.semi2intv[modulo(semi, 12)]
