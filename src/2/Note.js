@@ -1,15 +1,18 @@
-import { parseNoteName as parseName } from './helpers'
-import { Cache } from './utils'
+import Symbols    from './Symbols'
+import ItemHelper from './ItemHelper'
+import Item       from './Item'
 
-class Note {
+class Note extends Item {
   constructor(str) {
-    const { name, base, accs, semi } =
-      Cache.remember(`Note:ctr:${str}`, () => parseName(str))
+    super(str)
+  }
 
-    this.semi = semi
-    this.name = name
-    this.base = base
-    this.accs = accs
+  parse(str) {
+    return ItemHelper.parse(str, Symbols.notes)
+  }
+
+  fake(semi) {
+    return Symbols.semi2note(semi)
   }
 }
 

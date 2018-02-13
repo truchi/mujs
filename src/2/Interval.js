@@ -1,15 +1,18 @@
-import { parseIntervalName as parseName } from './helpers'
-import { Cache } from './utils'
+import Symbols    from './Symbols'
+import ItemHelper from './ItemHelper'
+import Item       from './Item'
 
-class Interval {
+class Interval extends Item {
   constructor(str) {
-    const { name, base, accs, semi } =
-      Cache.remember(`Interval:ctr:${str}`, () => parseName(str))
+    super(str)
+  }
 
-    this.semi = semi
-    this.name = name
-    this.base = base
-    this.accs = accs
+  parse(str) {
+    return ItemHelper.parse(str, Symbols.intervals, false)
+  }
+
+  fake(semi) {
+    return Symbols.semi2nterval(semi)
   }
 }
 
