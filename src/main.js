@@ -1,6 +1,11 @@
 import Symbols  from './2/Symbols'
 import Note     from './2/Note'
 import Interval from './2/Interval'
+import Scale, { injectMode  } from './2/Scale'
+import Mode , { injectScale } from './2/Mode'
+
+injectMode(Mode)
+injectScale(Scale)
 
 // ♭|♮|♯
 
@@ -11,7 +16,7 @@ let F = new Note(5)
 let G = new Note('G')
 let A = new Note(9)
 let B = new Note('B')
-console.log(C, D, E, F, G, A, B);
+console.log(C, D, E, F, G, A, B)
 
 let i1 = new Interval('1')
 let ib2 = new Interval('♭2')
@@ -21,4 +26,8 @@ let i4 = new Interval('4')
 let i5 = new Interval('5')
 let i6 = new Interval('6')
 let i7 = new Interval(11)
-console.log(i1, ib2, i2, i3, i4, i5, i6, i7);
+console.log(i1, ib2, i2, i3, i4, i5, i6, i7)
+
+let mode = new Mode([0, i2, 4, 7])
+console.log(mode)
+console.log(mode.scale().mode())

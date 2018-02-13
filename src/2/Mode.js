@@ -1,14 +1,20 @@
-import { semi2note } from './helpers'
-import Note from './Note'
+import List from './List'
 
-class Mode {
+let Scale = null
+
+class Mode extends List {
   constructor(intvs) {
-    this.intvs = intvs
+    super(intvs)
   }
 
-  notes(root) {
-    return this.intvs.map(intv => new Note(semi2note(root.semi + intv.semi)))
+  scale() {
+    return new Scale([2, 2, 2])
   }
+
+  // notes(root) {
+  //   return this.intvs.map(intv => new Note(semi2note(root.semi + intv.semi)))
+  // }
 }
 
 export default Mode
+export const injectScale = (Klass) => Scale = Klass
