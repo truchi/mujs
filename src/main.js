@@ -39,10 +39,10 @@ console.log(i2.add(A))
 console.log(i2.sub(i3))
 
 let scale = new Scale([i2, i2, ib2, i2, i2, i2, ib2])
-console.log(scale)
+console.log('scale', scale)
 console.log(scale.mode(-3))
 
-let mode = new Mode([0, 2, 4, 5, 7, 9, 11])
-console.log(mode)
+let mode = new Mode([2, 5, 4, 7, 9, 11])
+console.log('mode', mode)
 console.log(mode.scale())
 console.log(mode.scale().mode(2).notes(C))

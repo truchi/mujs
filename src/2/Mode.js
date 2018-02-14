@@ -27,6 +27,20 @@ class Mode extends List {
   notes(root) {
     return this.intvs.map(intv => root.add(intv))
   }
+
+  clean() {
+    let intvs = this.intvs
+
+    // Add unison if missing
+    const hasUnison = intvs.some(intv => intv.semi === 0)
+    if (!hasUnison)
+      intvs.unshift(new Interval)
+
+    // Sort
+    intvs = intvs.sort((intv1, intv2) => intv1.semi - intv2.semi)
+
+    this.intvs = intvs
+  }
 }
 
 export default Mode

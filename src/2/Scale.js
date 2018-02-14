@@ -1,4 +1,5 @@
 import { modulo } from './utils'
+import Symbols    from './Symbols'
 import List       from './List'
 import Interval   from './Interval'
 
@@ -25,6 +26,16 @@ class Scale extends List {
     intvs.pop()
 
     return new Mode(intvs)
+  }
+
+  clean() {
+    let intvs = this.intvs
+
+    // Sum must be 12
+    const sum = intvs.reduce((sum, intv) => sum + intv.semi, 0)
+    if (sum !== Symbols.N) throw `Semi's sum must be ${ Symbols.N }, is ${ sum }`
+
+    this.intvs = intvs
   }
 }
 
