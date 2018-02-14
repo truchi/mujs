@@ -37,6 +37,21 @@ class Scale extends List {
 
     this.intvs = intvs
   }
+
+  equals(scale) {
+    return this.intvs.every((intv, i) => intv.equivs(scale.intvs[i]))
+  }
+
+  equivs(scale) {
+    const l = this.intvs.length
+
+    return this.intvs.concat(this.intvs)
+      .some((intv, i, intvs) =>
+        i < l
+          ? new Scale(intvs.slice(i, i + l)).equals(scale)
+          : false
+      )
+  }
 }
 
 export default Scale

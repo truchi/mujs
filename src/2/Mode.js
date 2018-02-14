@@ -41,6 +41,14 @@ class Mode extends List {
 
     this.intvs = intvs
   }
+
+  equals(mode) {
+    return this.intvs.every((intv, i) => intv.equals(mode.intvs[i]))
+  }
+
+  equivs(mode) {
+    return this.intvs.every((intv, i) => intv.equivs(mode.intvs[i]))
+  }
 }
 
 export default Mode

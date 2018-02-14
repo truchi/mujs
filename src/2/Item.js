@@ -20,6 +20,14 @@ class Item {
   sub(item) {
     return new this.constructor(this.semi - item.semi)
   }
+
+  equals(item) {
+    return this.name === item.name
+  }
+
+  equivs(item) {
+    return this.semi === item.semi
+  }
 }
 
 export default Item
