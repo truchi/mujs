@@ -1,6 +1,6 @@
 import List from './List'
 
-let Scale = null
+let Scale
 
 class Mode extends List {
   constructor(intvs) {
@@ -8,7 +8,20 @@ class Mode extends List {
   }
 
   scale() {
-    return new Scale([2, 2, 2])
+    let intvs = this.intvs.reduce((list, intv, i, intvs) => {
+      if (i !== 0) {
+        const prev = intvs[i - 1]
+        list.push(intv.sub(prev))
+      }
+
+      return list
+    }, [])
+
+    const last  = this.intvs[this.intvs.length - 1]
+    const first = this.intvs[0]
+    intvs.push(first.sub(last))
+
+    return new Scale(intvs)
   }
 
   // notes(root) {

@@ -1,40 +1,31 @@
-import List from './List'
+import { modulo } from './utils'
+import List       from './List'
+import Interval   from './Interval'
 
-let Mode = null
+let Mode
 
 class Scale extends List {
   constructor(intvs) {
     super(intvs)
   }
 
-  mode() {
-    return new Mode([0, 1, 2])
-  }
+  mode(i) {
+    i = modulo(i, this.intvs.length)
 
-  // mode(i) {
-  //   let semis = this.intvs.map(intv => intv.semi)
-  //
-  //   i = modulo(i, semis.length)
-  //   console.log(i);
-  //
-  //   semis =
-  //     semis.slice(i)
-  //     .concat(semis.slice(0, i))
-  //     .reduce((acc, semi) => {
-  //       acc.push(semi + acc[acc.length - 1])
-  //
-  //       return acc
-  //     }, [0])
-  //
-  //   semis.pop()
-  //   // intvs = semis.map(intv => new Interval())
-  //
-  //   console.log(this.intvs.map(intv => intv.semi));
-  //   console.log(semis.slice(i).concat(semis.slice(0, i)));
-  //   console.log(semis);
-  //
-  //   // return new Mode
-  // }
+    let intvs =
+      this.intvs.slice(i)
+        .concat(this.intvs.slice(0, i))
+        .reduce((list, intv) => {
+          const prev = list[list.length - 1]
+          list.push(intv.add(prev))
+
+          return list
+        }, [new Interval])
+
+    intvs.pop()
+
+    return new Mode(intvs)
+  }
 }
 
 export default Scale
