@@ -24,9 +24,9 @@ class Mode extends List {
     return new Scale(intvs)
   }
 
-  // notes(root) {
-  //   return this.intvs.map(intv => new Note(semi2note(root.semi + intv.semi)))
-  // }
+  notes(root) {
+    return this.intvs.map(intv => root.add(intv))
+  }
 }
 
 export default Mode
