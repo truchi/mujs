@@ -34,9 +34,6 @@ class Mode extends List {
     if (!hasUnison)
       intvs.unshift(new Interval)
 
-    // Sort
-    intvs = intvs.sort((intv1, intv2) => intv1.semi - intv2.semi)
-
     // Remove duplicates
     let semis = []
     intvs = intvs.filter(intv => {
@@ -45,6 +42,9 @@ class Mode extends List {
 
       return !found
     })
+
+    // Sort
+    intvs = intvs.sort((intv1, intv2) => intv1.semi - intv2.semi)
 
     this.intvs = intvs
   }

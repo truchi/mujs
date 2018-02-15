@@ -1,4 +1,4 @@
-import Interval from './Interval'
+import Interval  from './Interval'
 import scalesYml from './dict/scales.yml'
 import chordsYml from './dict/chords.yml'
 
@@ -10,7 +10,7 @@ let DICT = {
 class Dict {
   static get(arg = null) {
     if (arg === null)
-      return DICT
+      return Object.assign({}, DICT)
 
     if (typeof arg === 'number')
       return Object.assign({}, DICT[arg])
