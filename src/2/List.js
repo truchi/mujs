@@ -10,14 +10,12 @@ const prefixes = {
     if (!exec) throw `Unable to parse ${ str } (${ prefixes.regexp })`
 
     const [all, klass, type, list] = exec
-    const constructor = klass === 's'  ? Scale  : Mode
+    const constructor = klass === 's'  ? List.Scale  : List.Mode
     const caster      = type  === 'id' ? String : Number
 
     return { constructor, caster, list }
   }
 }
-
-let Scale, Mode
 
 class List {
   constructor(intvs = [0]) {
@@ -54,11 +52,13 @@ class List {
 
     return new constructor(intvs)
   }
-
-  static inject(scaleClass, modeClass) {
-    Scale = scaleClass
-    Mode  = modeClass
-  }
 }
 
+List.Scale = null
+List.Mode  = null
+
 export default List
+export const inject = (scaleClass, modeClass) => {
+  List.Scale = scaleClass
+  List.Mode  = modeClass
+}

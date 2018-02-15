@@ -1,17 +1,15 @@
-import { modulo }              from './2/utils'
-import Dict                    from './2/Dict'
-import Symbols                 from './2/Symbols'
-import Note                    from './2/Note'
-import Interval                from './2/Interval'
-import List                    from './2/List'
-import Scale, { injectMode  }  from './2/Scale'
-import Mode , { injectScale }  from './2/Mode'
+import { modulo } from './2/utils'
+import Dict, { inject as DictInject } from './2/Dict'
+import List, { inject as ListInject } from './2/List'
+import Symbols  from './2/Symbols'
+import Note     from './2/Note'
+import Interval from './2/Interval'
+import Scale    from './2/Scale'
+import Mode     from './2/Mode'
 
-injectMode(Mode)
-injectScale(Scale)
-List.inject(Scale, Mode)
-Dict.inject(Scale, Mode)
-Dict.init()
+ListInject(Scale, Mode)
+DictInject(Scale, Mode)
+Dict._init()
 
 window.modulo   = modulo
 window.Symbols  = Symbols

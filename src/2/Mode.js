@@ -1,7 +1,5 @@
 import List from './List'
 
-let Scale
-
 class Mode extends List {
   constructor(intvs) {
     super(intvs)
@@ -21,7 +19,7 @@ class Mode extends List {
     const first = this.intvs[0]
     intvs.push(first.sub(last))
 
-    return new Scale(intvs)
+    return new List.Scale(intvs)
   }
 
   notes(root) {
@@ -52,4 +50,3 @@ class Mode extends List {
 }
 
 export default Mode
-export const injectScale = (Klass) => Scale = Klass

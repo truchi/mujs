@@ -8,7 +8,20 @@ let DICT = {
 }
 
 class Dict {
-  static init() {
+  static get(arg = null) {
+    if (arg === null)
+      return DICT
+
+    if (typeof arg === 'number')
+      return Object.assign({}, DICT[arg])
+
+    if (typeof arg === 'string')
+      return Dict._search(arg)
+
+    return null
+  }
+
+  static _init() {
     let index = 0
 
     const add = ({ id, slug, name, scale, modes }, index) => {
@@ -46,19 +59,6 @@ class Dict {
       })
   }
 
-  static get(arg = null) {
-    if (arg === null)
-      return DICT
-
-    if (typeof arg === 'number')
-      return Object.assign({}, DICT[arg])
-
-    if (typeof arg === 'string')
-      return Dict._search(arg)
-
-    return null
-  }
-
   static _search(str) {
     const index = DICT._map[str]
 
@@ -80,11 +80,10 @@ class Dict {
 
     return data
   }
-
-  static inject(scaleClass, modeClass) {
-    Scale = scaleClass
-    Mode  = modeClass
-  }
 }
 
 export default Dict
+export const inject = (scaleClass, modeClass) => {
+  Scale = scaleClass
+  Mode  = modeClass
+}

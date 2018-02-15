@@ -3,8 +3,6 @@ import Symbols    from './Symbols'
 import List       from './List'
 import Interval   from './Interval'
 
-let Mode
-
 class Scale extends List {
   constructor(intvs) {
     super(intvs)
@@ -25,7 +23,7 @@ class Scale extends List {
 
     intvs.pop()
 
-    return new Mode(intvs)
+    return new List.Mode(intvs)
   }
 
   clean() {
@@ -55,4 +53,3 @@ class Scale extends List {
 }
 
 export default Scale
-export const injectMode = (Klass) => Mode = Klass
