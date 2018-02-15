@@ -1,12 +1,17 @@
-import { modulo }    from './2/utils'
-import Symbols  from './2/Symbols'
-import Note     from './2/Note'
-import Interval from './2/Interval'
-import Scale, { injectMode  } from './2/Scale'
-import Mode , { injectScale } from './2/Mode'
+import { modulo }              from './2/utils'
+import Dict                    from './2/Dict'
+import Symbols                 from './2/Symbols'
+import Note                    from './2/Note'
+import Interval                from './2/Interval'
+import List                    from './2/List'
+import Scale, { injectMode  }  from './2/Scale'
+import Mode , { injectScale }  from './2/Mode'
 
 injectMode(Mode)
 injectScale(Scale)
+List.inject(Scale, Mode)
+Dict.inject(Scale, Mode)
+Dict.init()
 
 window.modulo   = modulo
 window.Symbols  = Symbols
@@ -68,10 +73,14 @@ let mode = new Mode([2, 5, 4, 7, 9, 11])
 console.log('----')
 console.log('mode')
 console.log('----')
-console.log(mode)
-console.log(mode.scale())
+console.log(mode, mode.id(), mode.slug())
 console.log(mode.scale().mode(2).notes(C))
 let m1 = new Mode(['1', '2', '3'])
 let m2 = new Mode(['1', '2', '♭4'])
 console.log('Mode([1, 2, 3]).equals(Mode([1, 2, ♭4]))', m1.equals(m2));
 console.log('Mode([1, 2, 3]).equivs(Mode([1, 2, ♭4]))', m1.equivs(m2));
+
+console.log('----')
+console.log('DICT')
+console.log('----')
+console.log(Dict.get());

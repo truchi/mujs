@@ -1,59 +1,59 @@
 import Interval from './Interval'
 import scalesYml from './dict/scales.yml'
 import chordsYml from './dict/chords.yml'
-console.log(scalesYml.concat(chordsYml));
 
-let SCALES = {
-  _name2id     : {}
-, _intervals2id: {}
-}
-let MODES = {
-  _name2id     : {}
-, _intervals2id: {}
+let Scale, Mode
+let DICT = {
+  _map: {}
 }
 
 class Dict {
   static init() {
-    let scaleId = 0
-    let  modeId = 0
+    let index = 0
 
-    scalesYml.concat(chordsYml).forEach(scale => {
-      let name      = scale.name
-      let intervals = scale.intervals.split(' ')
-      let modes     = scale.modes
-      let modeIds   = []
-      let semis     = intervals
-        .map(i => new Interval(i))
-        .map(i => i.semi)
+    const add = ({ id, slug, name, scale, modes }, index) => {
+      DICT._map[id  ] = index
+      DICT._map[slug] = index
+      DICT[index]     = typeof scale !== 'undefined'
+        ? { id, name, slug, scale }
+        : { id, name, slug, modes }
+    }
 
-      modes.forEach(mode => {
-        if (mode === null) return
+    const make = (ctor, yml) => {
+      const name  = yml.name
+      const scale = new ctor(yml.intervals.split(' '))
+      const id    = scale.id()
+      const slug  = scale.slug()
 
-        let name      = mode.name
-        let intervals = mode.intervals.split(' ')
-        let semis     = intervals
-          .map(i => new Interval(i))
-          .map(i => i.semi)
+      return { id, slug, name }
+    }
 
-        MODES[modeId] = { name, intervals, scaleId, semis }
-        MODES.     _name2id[name     ] = modeId
-        MODES._intervals2id[intervals] = modeId
-        modeIds.push(modeId)
+    scalesYml
+      .concat(chordsYml)
+      .forEach(yml => {
+        const scale = index++
+        const modes = []
 
-        ++modeId
+        yml.modes
+          .forEach(yml => {
+            if (yml === null) return modes.push(null)
+
+            add(Object.assign({ scale }, make(Mode, yml)), index)
+            modes.push(index++)
+          })
+
+        add(Object.assign({ modes }, make(Scale, yml)), scale)
       })
+  }
 
-      SCALES[scaleId] = { name , intervals, modeIds, semis }
-      SCALES.     _name2id[name     ] = scaleId
-      SCALES._intervals2id[intervals] = scaleId
+  static get() {
+    return DICT
+  }
 
-      ++scaleId
-    })
+  static inject(scaleClass, modeClass) {
+    Scale = scaleClass
+    Mode  = modeClass
   }
 }
 
-Dict.init()
-
-export const scales = SCALES
-export const modes  = MODES
 export default Dict
