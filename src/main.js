@@ -84,3 +84,5 @@ console.log('----')
 console.log('DICT')
 console.log('----')
 console.log(Dict.get());
+console.log(scale.dict());
+console.log(mode.dict());

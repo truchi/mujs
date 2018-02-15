@@ -46,8 +46,39 @@ class Dict {
       })
   }
 
-  static get() {
-    return DICT
+  static get(arg = null) {
+    if (arg === null)
+      return DICT
+
+    if (typeof arg === 'number')
+      return Object.assign({}, DICT[arg])
+
+    if (typeof arg === 'string')
+      return Dict._search(arg)
+
+    return null
+  }
+
+  static _search(str) {
+    const index = DICT._map[str]
+
+    if (typeof index === 'undefined') return null
+
+    const data = Dict.get(index)
+
+    if (data.hasOwnProperty('scale')) {
+      data.scale = Dict.get(data.scale)
+      delete data.scale.modes
+    } else {
+      data.modes = data.modes.map(i => {
+        const mode = Dict.get(i)
+        delete mode.scale
+
+        return mode
+      })
+    }
+
+    return data
   }
 
   static inject(scaleClass, modeClass) {

@@ -1,4 +1,5 @@
 import Interval from './Interval'
+import Dict     from './Dict'
 
 const prefixes = {
   Scale : { id: 's:id:', slug: 's:slug:' }
@@ -40,6 +41,10 @@ class List {
     const prefix = prefixes[this.constructor.name].slug
 
     return prefix + this.intvs.map(intv => intv.semi).join(',')
+  }
+
+  dict() {
+    return Dict.get(this.id())
   }
 
   static from(str) {
