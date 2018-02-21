@@ -36,19 +36,61 @@ class Scale extends List {
     this.intvs = intvs
   }
 
+  id() {
+    const i = this._getIndex()
+    const id = this.intvs
+      .slice(i)
+      .concat(this.intvs.slice(0, i))
+      .map(intv => intv.name)
+      .join(',')
+
+    return `${ id } (${ i })`
+  }
+
+  slug() {
+    const i = this._getIndex()
+    const id = this.intvs
+      .slice(i)
+      .concat(this.intvs.slice(0, i))
+      .map(intv => intv.semi)
+      .join(',')
+
+    return `${ id } (${ i })`
+  }
+
   equals(scale) {
-    return this.intvs.every((intv, i) => intv.equivs(scale.intvs[i]))
+    return this.slug() === scale.slug()
   }
 
   equivs(scale) {
-    const l = this.intvs.length
+    const slug1 =  this.slug(false)
+    const slug2 = scale.slug(false)
 
-    return this.intvs.concat(this.intvs)
-      .some((intv, i, intvs) =>
-        i < l
-          ? new Scale(intvs.slice(i, i + l)).equals(scale)
-          : false
-      )
+    return `${ slug1 },${ slug1 }`.indexOf(slug2) !== -1
+  }
+
+  _getIndex() {
+    const semis  = this.intvs.map(i => i.semi)
+    const l      = semis.length
+    const table  = []
+
+    const getScore = (mode) => {
+      const l = mode.intvs.length
+      return mode.scale()
+        .intvs.map(i => i.semi)
+        .reduce((sum, semi, i) => sum + semi * (l - i - 1), 0)
+    }
+
+    for (let i = 0; i < l; ++i)
+      table.push({ i, semi: semis[i], score: getScore(this.mode(i)) })
+
+    table.sort((i1, i2) =>
+      i1.score != i2.score
+        ? i2.score - i1.score
+        : i2.semi - i1.semi
+    )
+
+    return table[0].i
   }
 }
 

@@ -53,7 +53,8 @@ console.log('♯4.equals(♭5)', is4.equals(ib5));
 console.log('♯4.equivs(♭5)', is4.equivs(ib5));
 console.log('♯4.equivs(G♭)', is4.equivs(Gb));
 
-let scale = new Scale([i2, i2, ib2, i2, i2, i2, ib2])
+console.log(new Interval('♭♭3'));
+let scale = new Scale([i2, i2, ib2, new Interval('♭♭3'), i2, i2, ib2])
 console.log('-----')
 console.log('scale')
 console.log('-----')
@@ -82,5 +83,3 @@ console.log('----')
 console.log('DICT')
 console.log('----')
 console.log(Dict.get());
-console.log(scale.dict());
-console.log(mode.dict());

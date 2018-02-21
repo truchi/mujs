@@ -49,12 +49,20 @@ class Mode extends List {
     this.intvs = intvs
   }
 
+  id() {
+    return 'm:id' + this.intvs.map(intv => intv.name).join(',')
+  }
+
+  slug() {
+    return 'm:slug' + this.intvs.map(intv => intv.semi).join(',')
+  }
+
   equals(mode) {
-    return this.intvs.every((intv, i) => intv.equals(mode.intvs[i]))
+    return this.id() === mode.id()
   }
 
   equivs(mode) {
-    return this.intvs.every((intv, i) => intv.equivs(mode.intvs[i]))
+    return this.slug() === mode.slug()
   }
 }
 
