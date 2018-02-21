@@ -21,7 +21,7 @@
   - name: Δ
     intervals: 1 3 5
 - name: "+"
-  intervals: 3 3 ♭4
+  intervals: 3 3 3
   modes:
   - name: "+"
     intervals: 1 3 ♯5
